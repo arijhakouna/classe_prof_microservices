@@ -1,7 +1,7 @@
 package com.microservice.classe.mapper;
 
 import com.microservice.classe.model.Classe;
-import com.microservice.classe.dto.ClasseDTO;
+import com.microservice.shared.dto.ClasseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

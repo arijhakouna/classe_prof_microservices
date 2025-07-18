@@ -1,7 +1,7 @@
 package com.microservice.professeur.controller;
 
-import com.microservice.professeur.dto.ProfesseurDTO;
-import com.microservice.professeur.dto.ClasseDTO;
+import com.microservice.shared.dto.ProfesseurDTO;
+import com.microservice.shared.dto.ClasseDTO;
 import com.microservice.professeur.service.ProfesseurService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

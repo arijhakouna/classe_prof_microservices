@@ -1,13 +1,13 @@
 package com.microservice.professeur.mapper;
 
-import com.microservice.professeur.dto.ProfesseurDTO;
 import com.microservice.professeur.model.Professeur;
+import com.microservice.shared.dto.ProfesseurDTO;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-07-18T23:48:35+0100",
+    date = "2025-07-19T00:11:13+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.15 (Debian)"
 )
 @Component

@@ -1,4 +1,3 @@
-com/microservice/classe/dto/ClasseDTO.class
 com/microservice/classe/model/Classe.class
 com/microservice/classe/dto/ProfesseurDTO.class
 com/microservice/classe/mapper/ClasseMapper.class

@@ -2,8 +2,8 @@ package com.microservice.professeur.service;
 
 import com.microservice.professeur.client.ClasseClient;
 import com.microservice.professeur.client.ClasseResponse;
-import com.microservice.professeur.dto.ProfesseurDTO;
-import com.microservice.professeur.dto.ClasseDTO;
+import com.microservice.shared.dto.ProfesseurDTO;
+import com.microservice.shared.dto.ClasseDTO;
 import com.microservice.professeur.mapper.ProfesseurMapper;
 import com.microservice.professeur.model.Professeur;
 import com.microservice.professeur.repository.ProfesseurRepository;

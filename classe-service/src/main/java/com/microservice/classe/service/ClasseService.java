@@ -2,7 +2,7 @@ package com.microservice.classe.service;
 
 import com.microservice.classe.client.ProfesseurClient;
 import com.microservice.classe.client.ProfesseurResponse;
-import com.microservice.classe.dto.ClasseDTO;
+import com.microservice.shared.dto.ClasseDTO;
 import com.microservice.classe.mapper.ClasseMapper;
 import com.microservice.classe.model.Classe;
 import com.microservice.classe.repository.ClasseRepository;
@@ -110,7 +110,7 @@ public class ClasseService {
     }
 
     @CircuitBreaker(name = "professeurClient", fallbackMethod = "getAllProfesseursFallback")
-    public List<com.microservice.classe.dto.ProfesseurDTO> getAllProfesseurs() {
+    public List<com.microservice.shared.dto.ProfesseurDTO> getAllProfesseurs() {
         try {
             List<ProfesseurResponse> professeurResponses = professeurClient.getAllProfesseurs();
             return professeurResponses.stream()
@@ -121,15 +121,15 @@ public class ClasseService {
         }
     }
 
-    public List<com.microservice.classe.dto.ProfesseurDTO> getAllProfesseursFallback(Exception e) {
+    public List<com.microservice.shared.dto.ProfesseurDTO> getAllProfesseursFallback(Exception e) {
         // Retourner une liste vide avec un message d'erreur
-        com.microservice.classe.dto.ProfesseurDTO errorDTO = new com.microservice.classe.dto.ProfesseurDTO();
+        com.microservice.shared.dto.ProfesseurDTO errorDTO = new com.microservice.shared.dto.ProfesseurDTO();
         errorDTO.setErrorMessage("Service professeur-service est indisponible pour le moment");
         return List.of(errorDTO);
     }
 
-    private com.microservice.classe.dto.ProfesseurDTO convertToProfesseurDTO(ProfesseurResponse response) {
-        com.microservice.classe.dto.ProfesseurDTO dto = new com.microservice.classe.dto.ProfesseurDTO();
+    private com.microservice.shared.dto.ProfesseurDTO convertToProfesseurDTO(ProfesseurResponse response) {
+        com.microservice.shared.dto.ProfesseurDTO dto = new com.microservice.shared.dto.ProfesseurDTO();
         dto.setId(response.getId());
         dto.setNom(response.getNom());
         dto.setEmail(response.getEmail());

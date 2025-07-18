@@ -1,7 +1,7 @@
 package com.microservice.professeur.mapper;
 
 import com.microservice.professeur.model.Professeur;
-import com.microservice.professeur.dto.ProfesseurDTO;
+import com.microservice.shared.dto.ProfesseurDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
