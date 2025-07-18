@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  eureka-server:
+    build: ./eureka-server
+    image: eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    volumes:
+      - ./eureka-server:/app
+      - /app/target
+    working_dir: /app
+    command: mvn spring-boot:run
+    networks:
+      - microservices-network
+
+  gateway-service:
+    build: ./gateway-service
+    image: gateway-service:latest
+    container_name: gateway-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    volumes:
+      - ./gateway-service:/app
+      - /app/target
+    working_dir: /app
+    command: mvn spring-boot:run
+    depends_on:
+      - eureka-server
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    external: true
+    name: validationmicroservices_microservices-network

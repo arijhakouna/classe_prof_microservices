@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  classe-service:
+    build: ./classe-service
+    image: classe-service:latest
+    container_name: classe-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/classe_db
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_ENABLED=true
+    volumes:
+      - ./classe-service:/app
+      - /app/target
+    working_dir: /app
+    command: mvn spring-boot:run
+    networks:
+      - microservices-network
+
+  professeur-service:
+    build: ./professeur-service
+    image: professeur-service:latest
+    container_name: professeur-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/professeursdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_ENABLED=true
+    volumes:
+      - ./professeur-service:/app
+      - /app/target
+    working_dir: /app
+    command: mvn spring-boot:run
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    external: true
+    name: validationmicroservices_microservices-network
+
+

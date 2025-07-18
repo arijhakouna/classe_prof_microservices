@@ -1,0 +1,11 @@
+com/microservice/professeur/mapper/ProfesseurMapperImpl.class
+com/microservice/professeur/dto/ProfesseurDTO.class
+com/microservice/professeur/service/ProfesseurService.class
+com/microservice/professeur/client/ClasseResponse.class
+com/microservice/professeur/ProfesseurServiceApplication.class
+com/microservice/professeur/repository/ProfesseurRepository.class
+com/microservice/professeur/mapper/ProfesseurMapper.class
+com/microservice/professeur/client/ClasseClient.class
+com/microservice/professeur/controller/ProfesseurController.class
+com/microservice/professeur/model/Professeur.class
+com/microservice/professeur/dto/ClasseDTO.class

@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  
+  main:
+    web-application-type: reactive
+  
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+          predicates:
+            - name: Path
+              args:
+                pattern: "'/' + serviceId + '/**'"
+          filters:
+            - name: StripPrefix
+              args:
+                parts: 1
+      
+      routes:
+        # Routes statiques pour les API spécifiques
+        - id: classe-service-api
+          uri: lb://classe-service
+          predicates:
+            - Path=/api/classes/**
+          filters:
+            - RewritePath=/api/classes/(?<segment>.*), /api/classes/${segment}
+        
+        - id: professeur-service-api
+          uri: lb://professeur-service
+          predicates:
+            - Path=/api/professeurs/**
+          filters:
+            - RewritePath=/api/professeurs/(?<segment>.*), /api/professeurs/${segment}
+        
+        # Routes dynamiques basées sur le nom du service
+        - id: classe-service-dynamic
+          uri: lb://classe-service
+          predicates:
+            - Path=/classe-service/**
+          filters:
+            - StripPrefix=1
+        
+        - id: professeur-service-dynamic
+          uri: lb://professeur-service
+          predicates:
+            - Path=/professeur-service/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://eureka-server:8761/eureka/}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionLocator: INFO
+    org.springframework.cloud.gateway.filter: DEBUG 

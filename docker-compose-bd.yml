@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-professeur
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: professeursdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - microservices-network
+
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb-classe
+    environment:
+      MONGO_INITDB_DATABASE: classesdb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - microservices-network
+
+volumes:
+  mysql_data:
+  mongodb_data:
+
+networks:
+  microservices-network:
+    driver: bridge 
