@@ -1,5 +1,4 @@
 /home/arij/validationMicroservices/professeur-service/src/main/java/com/microservice/professeur/client/ClasseResponse.java
-/home/arij/validationMicroservices/professeur-service/src/main/java/com/microservice/professeur/dto/ClasseDTO.java
 /home/arij/validationMicroservices/professeur-service/src/main/java/com/microservice/professeur/model/Professeur.java
 /home/arij/validationMicroservices/professeur-service/src/main/java/com/microservice/professeur/client/ClasseClient.java
 /home/arij/validationMicroservices/professeur-service/src/main/java/com/microservice/professeur/mapper/ProfesseurMapper.java

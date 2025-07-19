@@ -7,4 +7,3 @@ com/microservice/professeur/mapper/ProfesseurMapper.class
 com/microservice/professeur/client/ClasseClient.class
 com/microservice/professeur/controller/ProfesseurController.class
 com/microservice/professeur/model/Professeur.class
-com/microservice/professeur/dto/ClasseDTO.class

@@ -1,4 +1,3 @@
-/home/arij/validationMicroservices/classe-service/src/main/java/com/microservice/classe/dto/ProfesseurDTO.java
 /home/arij/validationMicroservices/classe-service/src/main/java/com/microservice/classe/repository/ClasseRepository.java
 /home/arij/validationMicroservices/classe-service/src/main/java/com/microservice/classe/controller/ClasseController.java
 /home/arij/validationMicroservices/classe-service/src/main/java/com/microservice/classe/model/Classe.java

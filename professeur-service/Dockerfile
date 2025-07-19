@@ -10,5 +10,9 @@ WORKDIR /app
 # Exposer le port
 EXPOSE 8082
 
+# Copier le script d'entrée
+COPY entrypoint.sh /app/
+RUN chmod +x /app/entrypoint.sh
+
 # Commande par défaut (sera surchargée par docker-compose)
-CMD ["mvn", "spring-boot:run"]
+CMD ["/app/entrypoint.sh"]

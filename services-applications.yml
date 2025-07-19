@@ -13,9 +13,10 @@ services:
       - SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_ENABLED=true
     volumes:
       - ./classe-service:/app
+      - ./shared-library:/app/shared-library
       - /app/target
     working_dir: /app
-    command: mvn spring-boot:run
+    command: bash /app/entrypoint.sh
     networks:
       - microservices-network
 
@@ -34,9 +35,10 @@ services:
       - SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_ENABLED=true
     volumes:
       - ./professeur-service:/app
+      - ./shared-library:/app/shared-library
       - /app/target
     working_dir: /app
-    command: mvn spring-boot:run
+    command: bash /app/entrypoint.sh
     networks:
       - microservices-network
 
